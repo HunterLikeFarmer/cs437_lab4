@@ -1,0 +1,8 @@
+certificates/
+basic_discovery_better.py
+AmazonRootCA1.pem
+437_key_pair.pem
+access_key.sh
+*.crt
+*.key
+*.pem
