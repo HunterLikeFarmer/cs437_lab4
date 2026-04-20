@@ -1,0 +1,19 @@
+{
+  "component": {
+    "com.example.PythonHelloWorld": {
+      "author": "Vishal",
+      "version": "NEXT_PATCH",
+      "build": {
+        "build_system": "zip",
+        "options": {
+          "zip_name": ""
+        }
+      },
+      "publish": {
+        "bucket": "lab4",
+        "region": "us-east-1"
+      }
+    }
+  },
+  "gdk_version": "1.3.0"
+}

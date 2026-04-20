@@ -1,0 +1,29 @@
+---
+RecipeFormatVersion: "2020-01-25"
+ComponentName: "com.example.PythonHelloWorld"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription: "Processes vehicle CO2 data and publishes max CO2 back to each vehicle topic."
+ComponentPublisher: "Vishal"
+
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.mqttproxy:
+        "com.example.PythonHelloWorld:mqttproxy:1":
+          policyDescription: "Allows pub/sub to vehicle emission topics"
+          operations:
+            - "aws.greengrass#PublishToIoTCore"
+            - "aws.greengrass#SubscribeToIoTCore"
+          resources:
+            - "vehicle/emission/data"
+            - "vehicle/emission/result/*"
+
+Manifests:
+  - Platform:
+      os: all
+    Artifacts:
+      - Uri: "s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/com.example.PythonHelloWorld.zip"
+        Unarchive: ZIP
+    Lifecycle:
+      Install: "python3 -m pip install --break-system-packages awsiotsdk"
+      Run: "python3 -u {artifacts:decompressedPath}/com.example.PythonHelloWorld/main.py"
