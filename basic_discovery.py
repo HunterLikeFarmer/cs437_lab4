@@ -85,7 +85,6 @@ def on_connection_resumed(connection, return_code, session_present, **kwargs):
     print('connection resumed with return code {}, session present {}'.format(return_code, session_present))
 
 
-# Try IoT endpoints until we find one that works
 def try_iot_endpoints():
     for gg_group in discover_response.gg_groups:
         for gg_core in gg_group.cores:

@@ -6,3 +6,4 @@ access_key.sh
 *.crt
 *.key
 *.pem
+*.zip
